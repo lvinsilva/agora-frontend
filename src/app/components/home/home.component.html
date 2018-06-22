@@ -1,11 +1,59 @@
-<h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Angular 6!!</p>
-<h3>All registered users:</h3>
-<ul>
-    <li *ngFor="let user of users">
-        {{user.username}} ({{user.firstName}} {{user.lastName}})
-        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-    </li>
-</ul>
-<p><a [routerLink]="['/login']">Logout</a></p>
-© 2018 GitHub, Inc.
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-green">
+                <span class="info-box-icon">
+                    <i class="fa fa-arrow-circle-o-up" style="font-size: 90px;"></i>
+                </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Altas</span>
+                    <span class="info-box-number">41,410</span>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 70%"></div>
+                    </div>
+                    <span class="progress-description">
+                        70% Increase
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-blue">
+                <span class="info-box-icon">
+                    <i class="fa fa-minus-circle" style="font-size: 90px;"></i>
+                </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Estáveis</span>
+                    <span class="info-box-number">41,410</span>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 70%"></div>
+                    </div>
+                    <span class="progress-description">
+                        70% Decrease
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-red">
+                <span class="info-box-icon">
+                    <i class="fa fa-arrow-circle-o-down" style="font-size: 90px;"></i>
+                </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Baixas</span>
+                    <span class="info-box-number">41,410</span>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 70%"></div>
+                    </div>
+                    <span class="progress-description">
+                        70% Decrease
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <app-users-list></app-users-list>
+    </div>
+</div>

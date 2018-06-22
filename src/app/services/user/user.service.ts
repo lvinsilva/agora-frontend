@@ -1,14 +1,43 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { User } from '../../models';
+import { Apollo } from 'apollo-angular';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
+import gql from 'graphql-tag';
+
+import { User, Query } from '../../types';
 
 @Injectable()
 export class UserService {
-    constructor(private http: HttpClient) { }
+    users: Observable<User[]>;
+    constructor(
+        private http: HttpClient,
+        private apollo: Apollo
+    ) { }
 
     getAll() {
-        return this.http.get<User[]>('/api/users');
+        this.users = this.apollo.watchQuery<Query>(
+            {
+                query: gql`
+                  query allUsers {
+                    allUsers {
+                        id
+                        username
+                        password
+                        firstName
+                        lastName
+                        email
+                        cpf
+                    }
+                  }
+                `
+            })
+            .valueChanges
+            .pipe(
+                map(result => result.data.allUsers)
+            );
+        return this.users;
     }
 
     getById(id: number) {

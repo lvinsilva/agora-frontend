@@ -1,4 +1,5 @@
-export class User {
+
+export interface User  {
     id: number;
     username: string;
     password: string;
@@ -6,4 +7,8 @@ export class User {
     lastName: string;
     email: string;
     cpf: string;
+}
+
+export interface Query {
+    allUsers: User[];
 }
